@@ -99,14 +99,13 @@ const TRANSITION_IMAGES = [
         reason: "Not enough bones" }),
         fn: s => {
           s.bones -= 500;
-          s.proles -= 3;
           random = Math.floor(Math.random() * 100);
           if (random <= 10) {
             s.proles = s.proles  + Math.ceil(s.proles * 0.5);
             s.controllers = s.controllers  + Math.ceil(s.controllers * 1); // Izskatās debīli, bet viegli mainīt vērtību.
             addLog("Propaganda campaign was a critical success!!!");
           }
-          else if ( 10 > random <= 60) {
+          else if ( 10 < random <= 40) {
             s.proles = s.proles  + Math.ceil(s.proles * 0.25);
 
             addLog("Propaganda campaign was a success!");
