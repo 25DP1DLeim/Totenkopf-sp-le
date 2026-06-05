@@ -195,7 +195,7 @@ const TRANSITION_IMAGES = [
     },
     {
       name: "An ambush opportunity",
-      desc: "You've received intel about where one of the legionnaire camp resides.",
+      desc: "You've received intel about where one of the legionnaire camps resides.",
       options: [
         {
           text: "Bomb it (-500 bones)",
