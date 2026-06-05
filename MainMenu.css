@@ -1,0 +1,26 @@
+body {
+    background-image: url('GimpFaili/MetalTexture.png');
+    background-repeat: repeat;
+    font-family: 'Courier New', monospace; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1 {
+    color: red;
+    font-size: 100px;
+}
+.gaming {
+    background-image: url('./GimpFaili/PlayBtn.png');
+    background-size: cover;
+    height: 200px;
+    width: 400px;
+    transition: 25ms;
+}
+.gaming:hover {
+    background-image: url('./GimpFaili/PlayBtnHover.png');
+    background-size: cover;
+    height: 200px;
+    width: 400px;
+    transform: translateY(-10px);
+}

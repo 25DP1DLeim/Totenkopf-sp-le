@@ -1,7 +1,7 @@
 # Totenkopf 'Dokumentācija'
 
 ## Galvenā ideja:
-Totenkopf ir clicker spēle ar griezeniskiem pretīgiem vizuāliem, kurus iedvesmoja Garry's mod gamemode "Industrial Nightmare: Liver failure"
+Totenkopf ir spēle, kuru iedvesmoja spēle '60 seconds' ar griezeniskiem pretīgiem vizuāliem, kurus iedvesmoja Garry's mod gamemode "Industrial Nightmare: Liver failure"
 
 Galvenā spēles valūta ir kauli.
 

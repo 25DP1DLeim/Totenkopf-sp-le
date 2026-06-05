@@ -1,0 +1,103 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); background: transparent; }
+#game { width: 100%; min-height: 600px; position: relative; font-family: 'Courier New', monospace; }
+#layout { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr auto; gap: 2px; background: #111; min-height: 580px; }
+#event-panel { grid-column: 1; grid-row: 1 / 4; background-image: url('./GimpFaili/DiaryTexture.png'); background-repeat: no-repeat;background-size: cover; border: 1px solid #333; padding: 16px; display: flex; flex-direction: column; gap: 12px; min-height: 560px; overflow-y: auto; }
+#count-panel { grid-column: 2; grid-row: 1; background-image: url('./GimpFaili/TileTexture.png'); border: 1px solid #333; padding: 12px; }
+#shop-panel { grid-column: 2; grid-row: 2; background-image: url('./GimpFaili/WallTexture.png'); background-repeat: repeat; border: 1px solid #333; padding: 12px; overflow-y: auto; }
+#action-bar { grid-column: 2; grid-row: 3; background: #0a0a0a; border: 1px solid #ffffff; padding: 8px 12px; display: flex; justify-content: flex-end; align-items: center; }
+.panel-label { font-size: 10px; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+.stat-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-size: 13px; }
+.stat-name { color: #ffffff; }
+.stat-val { color: #e8d5a3; font-weight: 500; font-size: 14px; }
+.stat-val.danger { color: #e24b4a; }
+.stat-val.warning { color: #ef9f27; }
+
+/* Diary entries */
+.diary-day-header { font-size: 11px; color: #ffffff; letter-spacing: 3px; text-transform: uppercase; padding-bottom: 6px; border-bottom: 1px solid #1c1c1c; margin-top: 4px; }
+.diary-block { display: flex; flex-direction: column; gap: 10px; }
+.diary-event { border-left: 2px solid #000000; padding-left: 10px; }
+.diary-event.active { border-left-color: #000000; }
+/*
+Es tulīt fucking nošaušos
+Es tik ilgi centos saprast nahujam fonta krāsa nemainas
+IZRĀDĀS ŠIS NEKO NEMAINA JO EVENTIEM ES KRĀSU UN STILU LIEKU CAUR JAVASCRIPT.
+*/
+/*
+Update: nevermind, man šķita, ka melns fons uz papīra lapas izskatīsies labi, bet es burtiski neko nevaru salasīt.
+*/
+#event-title { font-size: 16px; font-weight: 500; color: #000000; min-height: 22px; }
+#event-desc { font-size: 13px; color: #000000; line-height: 1.6; min-height: 40px; }
+#event-notice { font-size: 12px; color: #000000; font-style: italic; min-height: 16px; }
+
+.option-row { display: flex; align-items: flex-start; gap: 10px; padding: 8px 10px; border: 1px solid #2a2a2a; border-radius: 4px; cursor: pointer;}
+.option-row:hover:not(.locked) { border-color: #555; background: #111; }
+.option-row.selected { border-color: #000000; background: #151510; }
+.option-row.locked { opacity: 0.4; cursor: not-allowed; }
+.option-check { width: 16px; height: 16px; border: 1px solid #555; border-radius: 2px; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; }
+.option-row.selected .option-check { border-color: #e8d5a3; background: #e8d5a3; }
+.option-check-inner { width: 8px; height: 8px; background: #0a0a0a; border-radius: 1px; display: none; }
+.option-row.selected .option-check-inner { display: block; }
+.option-text { font-size: 13px; color: #ccc; line-height: 1.4; }
+.option-req { font-size: 10px; color: #e24b4a; margin-top: 3px; letter-spacing: 0.5px; }
+
+.shop-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #1a1a1a;}
+.shop-item:last-child { border-bottom: none; }
+.shop-item-info { font-size: 12px; }
+.shop-item-name { color: #ffffff; font-weight: 500; }
+.shop-item-desc { color: #ffffff; font-size: 11px; margin-top: 2px; }
+.shop-btn { background: transparent; border: 1px solid #444; color: #e8d5a3; font-size: 11px; padding: 4px 10px; border-radius: 3px; cursor: pointer; font-family: 'Courier New', monospace; transition: border-color 0.15s; }
+.shop-btn {
+    height: 75px;
+    width: 150px;
+}
+.shop-btn:hover:not(:disabled) { border-color: #e8d5a3; }
+.shop-btn:disabled { opacity: 0.3; cursor: default; }
+#next-btn { background: transparent; border: 1px solid #444; color: #aaa; font-size: 12px; padding: 6px 16px; border-radius: 3px; cursor: pointer; font-family: 'Courier New', monospace; transition: all 0.15s; }
+#next-btn.ready { border-color: #e8d5a3; color: #e8d5a3; }
+#next-btn:disabled { opacity: 0.3; cursor: default; }
+#log { font-size: 13px; color: #ffffff; font-weight: 500; min-height: 40px; line-height: 1.5; padding-top: 8px; border-top: 1px solid #1a1a1a; margin-top: auto; background-image: url('./GimpFaili/CircuitTexture.png');}
+
+.prole-btn{
+    background-image: url('./GimpFaili/AcquireBtn.png');
+    background-size: cover;
+}
+.prole-btn:hover{
+    background-image: url('./GimpFaili/AcquireBtnHover.png');
+    background-size: cover;
+}
+.cont-btn{
+    background-image: url('./GimpFaili/RecruitBtn.png');
+    background-size: cover;
+}
+.cont-btn:hover{
+    background-image: url('./GimpFaili/RecruitBtnHover.png');
+    background-size: cover;
+}
+.purchase-btn{
+    background-image: url('./GimpFaili/PurchaseBtn.png');
+    background-size: cover;
+}
+.purchase-btn:hover{
+    background-image: url('./GimpFaili/PurchaseBtnHover.png');
+    background-size: cover;
+}
+
+/* Overlay */
+#overlay { position: absolute; inset: 0; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; opacity: 0; pointer-events: none; transition: opacity 0.3s; overflow: hidden; }
+#overlay.visible { opacity: 1; pointer-events: all; }
+#overlay-img { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 0.08s; }
+#overlay-day-wrap { position: relative; z-index: 2; text-align: center; }
+#overlay-day { font-size: 64px; color: #e8d5a3; font-family: 'Courier New', monospace; letter-spacing: 6px; text-shadow: 0 0 40px #e8d5a388; }
+#overlay-sub { font-size: 11px; color: #888; letter-spacing: 8px; margin-bottom: 10px; text-transform: uppercase; }
+#gameover { position: absolute; inset: 0; background: #000; display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 20; }
+#gameover h1 { font-size: 64px; color: #e24b4a; font-family: 'Courier New', monospace; letter-spacing: 8px; }
+#gameover p { color: #555; margin-top: 16px; font-size: 14px; letter-spacing: 2px; }
+
+.past-event { opacity: 0.45; }
+.past-event .diary-event { border-left-color: #282828; }
+.past-event .option-row { opacity: 0.6; cursor: default; pointer-events: none; }
+body {
+    background-image: url('./GimpFaili/MetalTexture.png');
+    background-repeat: repeat;
+}

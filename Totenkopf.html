@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Totenkopf</title>
+    <link rel="stylesheet" href="Styles.css">
+</head>
+<body>
+    <div id="game">
+        <div id="layout">
+          <div id="event-panel">
+            <div class="panel-label">Diary</div>
+            <div id="diary-container"></div>
+            <div id="log"></div>
+          </div>
+          <div id="count-panel">
+            <div class="panel-label">Resources</div>
+            <div class="stat-row"><span class="stat-name">Bones</span><span class="stat-val" id="stat-bones">0</span></div>
+            <div class="stat-row"><span class="stat-name">Proletariat</span><span class="stat-val" id="stat-proles">0</span></div>
+            <div class="stat-row"><span class="stat-name">Controllers</span><span class="stat-val" id="stat-controllers">0</span></div>
+            <!--<div class="stat-row"><span class="stat-name">Legionnaires</span><span class="stat-val" id="stat-legions">0</span></div>-->
+            <div class="stat-row"><span class="stat-name">Machine tier</span><span class="stat-val" id="stat-machine">1</span></div>
+            <div class="stat-row"><span class="stat-name">Safety tier</span><span class="stat-val" id="stat-safety">1</span></div>
+          </div>
+          <div id="shop-panel">
+            <div class="panel-label">Shop</div>
+            <div class="shop-item">
+              <div class="shop-item-info"><img src="GimpFaili/GearIcon.png" height="50px", width="50px"/><div class="shop-item-name">Proletarian <span style="color:#ffffff">— 100 bones</span></div><div class="shop-item-desc">A reliable worker willing to suffer and manufacture bones.</div></div>
+              <button class="shop-btn prole-btn" onclick="buyItem('prole')"></button>
+            </div>
+            <div class="shop-item">
+              <div class="shop-item-info"><img src="GimpFaili/ContIcon.png" height="50px", width="50px"/><div class="shop-item-name">Controller <span style="color:#ffffff">— 200 bones</span></div><div class="shop-item-desc">Enforces order, fends off legionnaires</div></div>
+              <button class="shop-btn cont-btn" onclick="buyItem('controller')"></button>
+            </div>
+            <div class="shop-item">
+              <div class="shop-item-info"><img src="GimpFaili/GearIcon.png" height="50px", width="50px"/><div class="shop-item-name">Machine upgrade <span id="machine-cost-label" style="color:#ffffff">— 50 bones</span></div><div class="shop-item-desc">Boosts output; risk of accidents</div></div>
+              <button class="shop-btn purchase-btn" id="btn-machine" onclick="buyItem('machine')"></button>
+            </div>
+            <div class="shop-item">
+              <div class="shop-item-info"><img src="GimpFaili/NeuroIcon.png" height="50px", width="50px"/><div class="shop-item-name">Safety upgrade <span id="safety-cost-label" style="color:#ffffff">— 40 bones</span></div><div class="shop-item-desc">Reduces machine accident risk</div></div>
+              <button class="shop-btn purchase-btn" id="btn-safety" onclick="buyItem('safety')"></button>
+            </div>
+          </div>
+          <div id="action-bar">
+            <button id="next-btn" onclick="nextEvent()">Resolve ›</button>
+          </div>
+        </div>
+        <div id="overlay">
+          <div id="overlay-img"></div>
+          <div id="overlay-day-wrap">
+            <div id="overlay-sub">Day</div>
+            <div id="overlay-day">—</div>
+          </div>
+        </div>
+        <div id="gameover">
+          <h1>GAME OVER</h1>
+          <p>The bones ran out. The workers are gone.</p>
+        </div>
+        </div>
+</body>
+</html>
+
+<script src="Script.js"></script>

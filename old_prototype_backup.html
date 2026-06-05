@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Totenkopf</title>
+
+</head>
+<body>
+    <h1 id="bone_counter"></h1>
+    <h1 id="day_counter"></h1>
+    <h2 id="bone_progress_counter"></h2>
+    <h2 id="sanity">aaaa</h2>
+    <button id="bone_button">Suffer</button>
+    <button id="buy_prole_button">Buy a prole</button>
+
+</body>
+</html>
+<script>
+
+const bone_counter = document.getElementById("bone_counter")
+const day_counter = document.getElementById("day_counter")
+const bone_progress_counter = document.getElementById("bone_progress_counter")
+const bone_button = document.getElementById("bone_button")
+const sanity = document.getElementById("sanity")
+
+var day = 0
+var bones = 0
+var bone_creation_progress = 0
+var bone_creation_progress_bonus = 0
+var proles = 0
+var prole_bone_creation_progress = 0
+var prole_bonus_bone_creation = 0
+var chance_of_incident = 0
+var incident_severity = 0
+var legionaires = 0
+var controllers = 0
+
+function UpdateShit() {
+    bone_counter.innerHTML = "You have " + bones + " bones!"
+    bone_progress_counter.innerHTML = bone_creation_progress + "%"
+}  
+function Random() {
+return Math.floor(Math.random() * 100)
+}
+
+
+function NewDay() {
+    
+}
+
+
+UpdateShit()
+bone_button.addEventListener("click", () => {
+    
+    let random_num = Math.floor(Math.random() * 100)
+    sanity.innerHTML = random_num
+    if (random_num <= 25 && bone_creation_progress >= 5) {
+        bone_creation_progress -= 5
+    }
+    else if (random_num > 90) {
+        bone_creation_progress += (10 + bone_creation_progress_bonus) * 2
+    }
+    else {
+        bone_creation_progress += 5 + bone_creation_progress_bonus
+    }  
+    while (bone_creation_progress >= 100) {
+        bone_creation_progress -= 100
+        bones += 1
+    }
+    UpdateShit()
+})
+
+
+</script>
