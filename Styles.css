@@ -13,7 +13,7 @@ body { font-family: var(--font-sans); background: transparent; }
 .stat-val.danger { color: #e24b4a; }
 .stat-val.warning { color: #ef9f27; }
 
-/* Diary entries */
+/* Dienasgrāmatas ieraksti*/
 .diary-day-header { font-size: 11px; color: #ffffff; letter-spacing: 3px; text-transform: uppercase; padding-bottom: 6px; border-bottom: 1px solid #1c1c1c; margin-top: 4px; }
 .diary-block { display: flex; flex-direction: column; gap: 10px; }
 .diary-event { border-left: 2px solid #000000; padding-left: 10px; }
