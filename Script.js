@@ -252,6 +252,9 @@ const TRANSITION_IMAGES = [
  Nope!
  Tuvākais, kas sanāca bija squarewave skaņa, bet audio playback nesanāca.
  */
+/* 
+Update: STRĀDĀ UZ GITHUB PAGES!!!!!
+*/
 let twTimer = null;
 let twAudioCtx = null;
 
@@ -290,7 +293,7 @@ function playTypingSound(pitch) {
 function typewriteEl(el, text, onDone) {
   el.textContent = '';
   let i = 0;
-  let pitch = 220;
+  let pitch = 110;
   clearInterval(twTimer);
   twTimer = setInterval(() => {
     if(i >= text.length) {
@@ -302,7 +305,7 @@ function typewriteEl(el, text, onDone) {
     el.textContent += ch;
     if(ch !== ' ' && ch !== '\n') {
       playTypingSound(pitch);
-      pitch = Math.min(pitch + 3, 520);
+      pitch = Math.min(pitch + 1, 520);
     }
     const panel = document.getElementById('event-panel');
     if(panel) panel.scrollTop = panel.scrollHeight;
