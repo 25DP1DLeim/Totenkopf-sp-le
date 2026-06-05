@@ -29,14 +29,14 @@ const TRANSITION_IMAGES = [
   const eventPool = [
     {
       name: "Starvation",
-      desc: "Supplies are running low. Theres northing left for the workers to eat.",
+      desc: "Supplies are running low. There's nothing left for the workers to eat.",
       options: [
         {
           text: "Break down bones into a paste for the proles.",
           requires: s => ({ ok: s.bones >= Math.ceil(s.proles * 2), reason: "Need " + Math.ceil(s.proles * 2) + "+ bones" }),
           fn: s => { s.bones -= Math.ceil(s.proles * 2); addLog("Bones spent. Workers - ready to live for one more day"); }
         },
-        { text: "Let them starve. They should be working, not whinning", fn: s => { s.proles = Math.max(0, s.proles - Math.ceil(s.proles * 0.3)); addLog("Many perished."); } }
+        { text: "Let them starve. They should be working, not whining", fn: s => { s.proles = Math.max(0, s.proles - Math.ceil(s.proles * 0.3)); addLog("Many perished."); } }
       ]
     },
     {
@@ -79,7 +79,7 @@ const TRANSITION_IMAGES = [
         {
           text: "Send controllers to diffuse the situation",
           requires: s => ({ ok: s.controllers >= 1, reason: "Need controllers" }),
-          fn: s => { s.controllers -= 1; addLog("The controllers dispersed the crowd. A controller dissappeared amongst the chaos."); }
+          fn: s => { s.controllers -= 1; addLog("The controllers dispersed the crowd. A controller disappeared amongst the chaos."); }
         },
         { text: "They can cry all they want.", fn: s => { 
             traitors = s.proles * Math.ceil(s.proles * 0.1);
@@ -92,7 +92,7 @@ const TRANSITION_IMAGES = [
     },
     {
       name: "Propaganda campaign.",
-      desc: "An offer has been left at your table. It costs a hefty sum (500 bones), but has alot of potential",
+      desc: "An offer has been left at your table. It costs a hefty sum (500 bones), but has a lot of potential",
       options: [
         { text: "Sure",
         requires: s => ({ ok: s.bones >= 500,
@@ -176,26 +176,26 @@ const TRANSITION_IMAGES = [
         converted = Math.ceil(s.proles * 0.2);
         s.proles -= converted;
         s.legions += converted
-        addLog(converted + " proleteriats(s) betrayed you.");
+        addLog(converted + " proleteriat(s) betrayed you.");
         updateStats();
       },
       options: [],
     },
     {
       name: "Genocide",
-      desc: "The legionnaires have taken extreme measures and massacered your workers.",
+      desc: "The legionnaires have taken extreme measures and massacred your workers.",
       condition: s => s.legions >= 5,
       onEnter: s => {
         killed = Math.ceil(s.proles * 0.4);
         s.proles -= killed;
-        addLog(killed + " proleteriats(s) were murdered.");
+        addLog(killed + " proleteriat(s) were murdered.");
         updateStats();
       },
       options: [],
     },
     {
       name: "An ambush opportunity",
-      desc: "You've recieved intel about where one of the legionnaire camp resides.",
+      desc: "You've received intel about where one of the legionnaire camp resides.",
       options: [
         {
           text: "Bomb it (-500 bones)",
