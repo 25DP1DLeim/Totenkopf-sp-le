@@ -52,8 +52,11 @@ const TRANSITION_IMAGES = [
         { text: "Walk it off.", fn: s => {
           
           if (Math.random() > 0.5){
-            s.proles = Math.max(0, s.proles - Math.ceil(s.proles * 0.5)); addLog("Ignorance."); }
-          s.proles = Math.max(0, s.proles - Math.ceil(s.proles * 0.1)); addLog("Ehh, could have been worse."); 
+            s.proles = Math.max(0, s.proles - Math.ceil(s.proles * 0.5)); addLog("Ignorance."); 
+          }
+          else{
+          s.proles = Math.max(0, s.proles - Math.ceil(s.proles * 0.1)); addLog("Ehh, could have been worse.");
+          } 
         
         
         } },
@@ -97,13 +100,13 @@ const TRANSITION_IMAGES = [
         fn: s => {
           s.bones -= 500;
           s.proles -= 3;
-          random = Math.random();
-          if (random <= 0.1) {
+          random = Math.floor(Math.random() * 100);
+          if (random <= 10) {
             s.proles = s.proles  + Math.ceil(s.proles * 0.5);
             s.controllers = s.controllers  + Math.ceil(s.controllers * 1); // Izskatās debīli, bet viegli mainīt vērtību.
             addLog("Propaganda campaign was a critical success!!!");
           }
-          else if ( 0.1 > random <= 0.6) {
+          else if ( 10 > random <= 60) {
             s.proles = s.proles  + Math.ceil(s.proles * 0.25);
 
             addLog("Propaganda campaign was a success!");
