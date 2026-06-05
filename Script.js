@@ -283,7 +283,7 @@ function playTypingSound(pitch) {
     gain.connect(ctx.destination);
     // 1 = oktāvs
     // 2 = divi oktāvi
-    source.playbackRate.value = pitch / 220;
+    source.playbackRate.value = pitch / 110;
     gain.gain.setValueAtTime(1, ctx.currentTime);
     source.start(ctx.currentTime);
   } catch(e) {}
