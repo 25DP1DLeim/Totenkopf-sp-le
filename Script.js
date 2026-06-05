@@ -150,7 +150,7 @@ const TRANSITION_IMAGES = [
     {
       name: "Critical machine failure",
       desc: "One of the machines gas tanks have exploded.",
-      condition: s => s.machineTier >= 3,
+      condition: s => s.machineTier >= 3 && s.safetyTier < s.machineTier,
       onEnter: s => {
         const lost = Math.ceil(s.proles * 0.08);
         s.proles = Math.max(1, s.proles - lost);
